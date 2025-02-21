@@ -57,7 +57,7 @@ Note: frontend.html has single functionality i.e. The Hindu   .
 
 
 ## Project Structure 
-
+```sh
 news-scraper/
 │── backend.py          # Flask backend
 │── thehindu.py         # Scraper for The Hindu
@@ -67,5 +67,6 @@ news-scraper/
 │── .gitignore          # Git ignore file
 │── README.md           # Project documentation
 
+```
 
 
