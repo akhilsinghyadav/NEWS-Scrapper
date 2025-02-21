@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Headlines</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h1 { text-align: center; }
+        ul { list-style-type: none; padding: 0; }
+        li { padding: 5px 0; }
+        li a { text-decoration: none; color: #333; }
+        li a:hover { text-decoration: underline; }
+    </style>
+    <script>
+        async function fetchHeadlines() {
+            const response = await fetch("http://127.0.0.1:5000/headlines_th");
+            const data = await response.json();
+            const container = document.getElementById("news-container");
+            container.innerHTML = "";
+
+            const headlines = data.news;
+            const list = document.createElement("ul");
+
+            headlines.forEach(headline => {
+                const item = document.createElement("li");
+                item.innerHTML = `<a href="${headline.link}" target="_blank">${headline.title}</a> - ${headline.published_time}`;
+                list.appendChild(item);
+            });
+
+            container.appendChild(list);
+        }
+
+        window.onload = fetchHeadlines;
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Latest News Headlines</h1>
+        <div id="news-container"></div>
+    </div>
+</body>
+</html>
