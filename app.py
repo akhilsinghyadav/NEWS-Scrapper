@@ -6,6 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from indianexpress import _get_the_express
+import os
 
 app = Flask(__name__)
 CORS(app)
@@ -35,4 +36,5 @@ def hindu_home():
 # if __name__ == "__main__":   
 #     app.run(debug=True)
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)  # Railway automatically assigns a port
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)  # Railway automatically assigns a port
