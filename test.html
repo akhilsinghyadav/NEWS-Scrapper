@@ -12,11 +12,12 @@
         li { padding: 5px 0; }
     </style>
     <script>
+        const BASE_URL = window.location.origin;
         async function fetchData() {
             try {
                 const [response1, response2] = await Promise.all([
-                    fetch("http://127.0.0.1:5000/headlines_ie"),
-                    fetch("http://127.0.0.1:5000/headlines_th")
+                    fetch(`${BASE_URL}/headlines_ie`),
+                    fetch(`${BASE_URL}/headlines_th`)
                 ]);
 
                 const data1 = await response1.json();
