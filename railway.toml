@@ -1,6 +1,0 @@
-[build]
-builder = "Nixpacks"
-nixpacksPlan = "python"
-
-[deploy]
-startCommand = "python app.py"
