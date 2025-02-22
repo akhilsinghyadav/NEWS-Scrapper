@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 from thehindu import _get_the_hindu
 import json
@@ -26,6 +26,13 @@ def get_headlines_ie():
 def get_headlines_th():
     news_data = _get_the_hindu()
     return jsonify(news_data)
-
-if __name__ == "__main__":   
-    app.run(debug=True)
+@app.route('/')
+def home():
+    return render_template("test.html")
+@app.route('/the_hindu')
+def hindu_home():
+    return render_template("frontend.html")
+# if __name__ == "__main__":   
+#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)  # Railway automatically assigns a port
